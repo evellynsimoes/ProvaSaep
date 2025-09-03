@@ -1,0 +1,15 @@
+@use './variaveis.scss' as *;
+.conteiner{
+    background-color: $cor-destaque;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+
+    .titulo{
+        font-size: 26px;
+        color:$link-color;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
