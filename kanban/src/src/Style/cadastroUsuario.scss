@@ -1,0 +1,96 @@
+@use './variaveis.scss' as *;
+
+.conteudoUsuario{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+    height: 80vh;
+
+    h1{
+        color: #006e99;
+        margin-bottom: 2rem;
+    }
+
+    form{
+        .inputs{
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            input{
+                padding: 0.6rem;
+                width: 22rem;
+                border-radius: 0.5rem;
+                border: 1px solid #aaaaaa;
+            }
+    
+            input:focus{
+                border-color: #006e99;
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+            }
+    
+            .inputNome{
+                display: flex;
+                flex-direction: column;
+                
+                label{
+                    margin-bottom: 0.4rem;
+                }
+
+                .erro-validacao {
+                    color: red;
+                    font-size: 0.9em;
+                    margin-top: 4px;
+                }
+            }
+    
+            .inputEmail{
+                display: flex;
+                flex-direction: column;
+    
+                label{
+                    margin-bottom: 0.4rem;
+                }
+
+                .erro-validacao {
+                    color: red;
+                    font-size: 0.9em;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+        .botao{
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            
+            button{
+                width: 10rem;
+                height: 2.7rem;
+                font-size: 1rem;
+                background-color: #006e99;
+                color: white;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                border: none;
+                transition: all 0.3s ease;
+                font-weight: 500;
+            }
+    
+            button:hover{
+                background-color: #005475;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(63, 81, 181, 0.2);
+            }
+    
+        }
+    }
+
+}
+
+.text-sweetalert{
+    font-family: 'Poppins',sans-serif;
+}

@@ -1,0 +1,16 @@
+$background: #f5f7fa;
+$cor-destaque:#006e99;
+$font-color:black;
+$font-size: 16px;
+$link-color:white;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: $background;
+    color: $font-color;
+    font-size: $font-size;
+}

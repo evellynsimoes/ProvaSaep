@@ -1,0 +1,29 @@
+@use './variaveis.scss' as *;
+.barra{
+    width: 100vw;
+    height: 40px;
+    background-color: $cor-destaque;
+    ul{
+        font-size: $font-size;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap:1rem;
+        color:$link-color;
+        margin-right: 20px;
+        font-family: 'Poppins', sans-serif;
+    }
+    a:hover{
+        color: rgb(202, 202, 202);
+        transition: 0.2s ease-in-out;
+    }
+        li{
+            list-style: none;
+            margin-top: 1rem;
+        }
+        a{
+            color:white;
+            text-decoration: none;
+        }
+
+}
