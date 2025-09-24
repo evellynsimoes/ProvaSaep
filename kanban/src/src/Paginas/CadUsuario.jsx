@@ -99,13 +99,13 @@ export function CadUsuario(){
                     <div className="inputs">
                         <div className="inputNome">
                             <label htmlFor="nome">Nome:</label>
-                            <input type="text" value={nome} onChange={(e) => {setNome(e.target.value); validarNome(e.target.value)}} required/>
+                            <input type="text" value={nome} onChange={(e) => {setNome(e.target.value); validarNome(e.target.value)}} required placeholder="Digite seu nome aqui"/>
                             {erroNome && <p className="erro-validacao">{erroNome}</p>}
                         </div>
 
                         <div className="inputEmail">
                             <label htmlFor="email">Email:</label>
-                            <input type="text" value={email} onChange={(e) => {setEmail(e.target.value); validarEmail(e.target.value)}} required/>
+                            <input type="text" value={email} onChange={(e) => {setEmail(e.target.value); validarEmail(e.target.value)}} required placeholder="Digite seu email aqui"/>
                             {erroEmail && <p className="erro-validacao">{erroEmail}</p>}
                         </div>
 

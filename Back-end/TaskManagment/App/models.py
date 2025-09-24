@@ -21,10 +21,9 @@ class Tarefas(models.Model):
         ('P', 'Pronto')
     )
 
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     idUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     descricao = models.TextField()
     setor = models.CharField(max_length=100, blank=True, null=True)
     prioridade = models.CharField(max_length=20, choices=escolha_prioridade)
-    status = models.CharField(max_length=20, choices=escolha_status)
-    data = models.DateField()
+    status = models.CharField(max_length=20, choices=escolha_status, default='A')
