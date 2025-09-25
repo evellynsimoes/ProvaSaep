@@ -14,13 +14,13 @@
   }
 
   &.card-status-A {
-    background-color: #fff9c4;   // amarelo claro para “A fazer”
+    background-color: #ffc4c4;
   }
   &.card-status-F {
-    background-color: #bbdefb;   // azul suave para “Fazendo”
+    background-color: #bbdefb;
   }
   &.card-status-P {
-    background-color: #c8e6c9;   // verde suave para “Pronto”
+    background-color: #c8e6c9;
   }
 
   .conteudo-postite {
@@ -32,18 +32,21 @@
       margin: 0;
       font-size: 1.1rem;
       color: #333;
+      font-family: 'Poppins', sans-serif;
     }
 
     p {
       margin: 0;
       font-size: 0.9rem;
       color: #555;
+      font-family: 'Poppins', sans-serif;
     }
 
     label {
       margin-top: 0.6rem;
       font-weight: 500;
       color: #444;
+      font-family: 'Poppins', sans-serif;
     }
 
     select {
