@@ -10,56 +10,73 @@ export function CadUsuario(){
     const [erroNome, setErroNome] = useState('');
     const [erroEmail, setErroEmail] = useState('');
 
-    const validarEmail = (valor) => {
-        const regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.com$/;
-        if(!regex.test(valor) || !valor.includes('.com')){
+    const handleChangeEmail = (e) => {
+        const valor = e.target.value;
+
+        const regexEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.com$/;
+        const regexCaracteres = /^.{0,30}$/;
+
+        if(!regexEmail.test(valor) || !valor.includes('.com')){
             setErroEmail("Email inválido. Use apenas letras minúsculas, com '@' e '.com'");
-        }else {
-            setErroEmail('');
+            return;
         }
+
+        if(!regexCaracteres.test(valor)){
+            setErroEmail("Máximo de 30 caracteres");
+            return;
+        }
+
+        setErroEmail('');
+        setEmail(valor);
     }
 
-    const validarNome = (valor) => {
-        const regex = /^[A-Za-zÀ-ÿ\s]+$/;
-        if(!regex.test(valor)){
-            setErroNome("Deve conter apenas letras");
-        }else{
-            setErroNome('');
+    const handleChangeNome = (e) => {
+        const valor = e.target.value;
+
+        const regexCaracteres = /^.{0,30}$/;
+        const regexNomeLetras = /^[A-Za-zÀ-ÿ\s]*$/;
+
+        //"test" retorna true se a string bate com o regex
+        if (!regexCaracteres.test(valor)){
+            setErroNome("Máximo de 30 caracteres");
+            return;
         }
+
+        if (!regexNomeLetras.test(valor)){
+            setErroNome("Deve conter apenas letras");
+            return;
+        }
+
+        setErroNome('');
+        setNome(valor);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (erroNome) {
-            Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Dados incorretos",
-            customClass: {
-                title: "text-sweetalert",
-            },
-            });
+
+        //revalida o nome
+        const regexNome = /^[A-Za-zÀ-ÿ\s]{1,30}$/;
+        if (!regexNome.test(nome)){
+            setErroNome ("Nome inválido. Use apenas letras (máx. 30 caracteres)");
             return;
+        } else {
+            setErroNome('');
         }
 
-        if (erroNome || erroEmail) {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Dados incorretos",
-                customClass: {
-                title: "text-sweetalert",
-                },
-            });
+        //revalida o email
+        const regexEmail =  /^[a-z0-9._%+-]+@[a-z0-9.-]+\.(com)$/;
+        if (!regexEmail.test(email)){
+            setErroEmail("Email inválido. Use apenas letras minúsculas, com '@' e '.com'");
             return;
+        } else {
+            setErroEmail('');
         }
-
 
         const novoUsuario = {
             nome: nome, 
             email: email
         };
-
+       
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
@@ -84,7 +101,15 @@ export function CadUsuario(){
                 setNome('');
                 setEmail('');
             } else {
-                console.error("Erro ao cadastrar usuário:", response.status);
+                Swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha ao cadastrar usuário",
+                    customClass: {
+                        title: "text-sweetalert",
+                    },
+                });
+                console.error("Erro ao cadastrar usuário", response.status);
             }
         } catch (error) {
             console.error("Erro de rede:", error);
@@ -99,13 +124,13 @@ export function CadUsuario(){
                     <div className="inputs">
                         <div className="inputNome">
                             <label htmlFor="nome">Nome:</label>
-                            <input type="text" value={nome} onChange={(e) => {setNome(e.target.value); validarNome(e.target.value)}} required placeholder="Digite seu nome aqui"/>
+                            <input type="text" value={nome} onChange={handleChangeNome} required placeholder="Digite seu nome aqui"/>
                             {erroNome && <p className="erro-validacao">{erroNome}</p>}
                         </div>
 
                         <div className="inputEmail">
                             <label htmlFor="email">Email:</label>
-                            <input type="text" value={email} onChange={(e) => {setEmail(e.target.value); validarEmail(e.target.value)}} required placeholder="Digite seu email aqui"/>
+                            <input type="text" value={email} onChange={handleChangeEmail} required placeholder="Digite seu email aqui"/>
                             {erroEmail && <p className="erro-validacao">{erroEmail}</p>}
                         </div>
 
